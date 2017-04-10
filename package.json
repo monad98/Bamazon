@@ -1,0 +1,19 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "customer": "node bamazonCustomer.js",
+    "manager": "node bamazonManager.js",
+    "supervisor": "node bamazonSupervisor.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "console.table": "^0.8.0",
+    "inquirer": "^3.0.6",
+    "mysql2": "^1.2.0"
+  }
+}
