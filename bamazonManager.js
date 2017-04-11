@@ -1,5 +1,4 @@
 //import modules
-const mysql = require('mysql2/promise');
 const inquirer = require('inquirer');
 const Rx = require('rx'); // dependency of inquirer
 require('console.table');
@@ -7,18 +6,11 @@ require('console.table');
 // import questions 
 const questions = require('./questions').questionsForManager;
 
+//init mysql
+const mysqlPromise = require('./mysql-promise');
 let connection;
+mysqlPromise.then(conn => connection = conn);
 
-const mysqlPromise = mysql.createConnection({
-    host: 'localhost',
-    port: 3306,
-    user: 'monad',
-    password: '9A?*&?nYPs',
-    database: 'Bamazon'
-  })
-  .then(conn => {
-    connection = conn;
-  });
 
 //questions stream
 const questions$ = new Rx.BehaviorSubject(questions.selectMenu);

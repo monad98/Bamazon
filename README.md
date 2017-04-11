@@ -23,19 +23,7 @@ npm run supervisor (or node bamazonSupervisor.js)
 - [Inquirer JS](https://github.com/SBoudrias/Inquirer.js/) - A collection of common interactive command line user interfaces.
 - [Node MySQL 2](https://github.com/sidorares/node-mysql2) - MySQL client for Node.js with focus on performance. Supports prepared statements, non-utf8 encodings, binary log protocol, compression, ssl.
 
-## Play
-- Customer
+## Play Video
+[download](https://goo.gl/mMNn36)
 
-```
-<img alt="Customer view" src="/images/customer.png" title="Customer view"/>
-```
-
-- Manager
-
-```
-<img alt="manager view" src="/images/manager.png" title="Manager view"/>
-```
-- Supervisor
-```
-<img alt="Supervisor view" src="/images/supervisor.png" title="Supervisor view"/>
-```
+<img alt="BAMAZON" src="/images/bamazon.gif" title="BAMAZON"/>

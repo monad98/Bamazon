@@ -1,25 +1,14 @@
 // import modules 
-const mysql = require('mysql2/promise');
 const inquirer = require('inquirer');
 const Rx = require('rx');
 
 // import questions 
 const questions = require('./questions').questionsForCustomer;
+
+//init mysql
+const mysqlPromise = require('./mysql-promise');
 let connection;
-
-const mysqlPromise = mysql.createConnection({
-    host: 'localhost',
-    port: 3306,
-    user: 'monad',
-    password: '9A?*&?nYPs',
-    database: 'Bamazon'
-  })
-  .then(conn => {
-    connection = conn;
-  });
-
-
-
+mysqlPromise.then(conn => connection = conn);
 
 
 //questions stream
@@ -30,6 +19,10 @@ const answers$ = Rx.Observable.fromPromise(mysqlPromise)
   .flatMap(() => inquirer.prompt(questions$).ui.process)
   .share();
 
+
+/**
+ * Order stream
+ */
 const id$ = answers$
   .filter(ans => ans.name === 'askId')
   .map(ans => ans.answer)
@@ -66,6 +59,10 @@ const order$ = Rx.Observable.zip(product$, quantity$)
     } else return Rx.Observable.of(0) //can't order 
   });
 
+
+/**
+ * Subscription
+ */
 order$.subscribe(cost => {
   if(cost) console.log('\nYour order is placed. Total Cost is $' + cost.toFixed(2) + '\n');
   else console.log('\nInsufficient quantity!\n');

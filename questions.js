@@ -1,11 +1,11 @@
 const questionsForCustomer = {
   askId: {
     name: 'askId',
-    message: 'Enter ID of the product to order.',
+    message: 'Enter ID of the product to order:',
   },
   askQuantity: {
     name: 'askQuantity',
-    message: 'How many units do you want to buy?',
+    message: 'How many units do you want to buy?:',
   }
 };
 

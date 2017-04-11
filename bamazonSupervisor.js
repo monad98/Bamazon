@@ -1,23 +1,15 @@
 //import modules
-const mysql = require('mysql2/promise');
 const inquirer = require('inquirer');
 const Rx = require('rx');
 require('console.table');
 
 // import questions 
 const questions = require('./questions').questionsForSupervisor;
-let connection;
 
-const mysqlPromise = mysql.createConnection({
-    host: 'localhost',
-    port: 3306,
-    user: 'monad',
-    password: '9A?*&?nYPs',
-    database: 'Bamazon'
-  })
-  .then(conn => {
-    connection = conn;
-  });
+//init mysql
+const mysqlPromise = require('./mysql-promise');
+let connection;
+mysqlPromise.then(conn => connection = conn);
 
 
 //questions stream
